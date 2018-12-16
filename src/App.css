@@ -30,3 +30,21 @@
     transform: rotate(360deg);
   }
 }
+.bingo-field {
+  width: 560px;
+  height: 560px;
+}
+
+.bingo-box {
+  margin: 0;
+  text-align: center;
+  font-size: 3.7em;
+  display: inline-block;
+  width: 110px;
+  height: 110px;
+  border: solid black 1px;
+}
+
+.activated {
+  background-color: red;
+}
