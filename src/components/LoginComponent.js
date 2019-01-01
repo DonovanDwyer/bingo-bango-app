@@ -23,7 +23,8 @@ class LoginComponent extends Component {
 
   render(){
     return (
-      <div>
+      <div className="start-screen-container">
+        <h1>BINGO<span>BANGO</span></h1>
         <h3>Log In</h3>
         <br />
         <form onSubmit={this.handleSubmit}>
@@ -31,7 +32,7 @@ class LoginComponent extends Component {
             type="text"
             name="username"
             value={this.state.username}
-            placeholder="Enter Username"
+            placeholder="Enter Your Username"
             onChange={this.handleChange}
           />
           <br />
@@ -39,7 +40,7 @@ class LoginComponent extends Component {
             type="password"
             name="password"
             value={this.state.password}
-            placeholder="Enter Password"
+            placeholder="Enter Your Password"
             onChange={this.handleChange}
           />
           <br />

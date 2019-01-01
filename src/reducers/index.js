@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux';
 import {userReducer} from './userReducer'
 import {bingoReducer} from './bingoReducer'
-import {gameReducer} from './gameReducer'
+import {bangoReducer} from './bangoReducer'
 
 const rootReducer = combineReducers({
   currentUser: userReducer,
   selectedBoxes: bingoReducer,
-  winner: gameReducer
+  valueBucket: bangoReducer
 });
 
 export default rootReducer;

@@ -1,50 +1,378 @@
-.App {
+/*
+Color Scheme:
+
+Wet Brick: #bf564c
+Pale Brick: #ff7366
+Skin: #ffbfb2
+Lavender: #5c2d91
+Heavy Sky: #6897e8
+ */
+@font-face {
+  font-family: 'Komika';
+  src: url('./assets/komtit.woff') format('woff'),
+  url('./assets/komtit.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Komika 2';
+  src: url('./assets/komtits.woff') format('woff'),
+  url('./assets/komtits.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Bigfish';
+  src: url('./assets/Bigfish.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Coiny';
+  src: url('./assets/coiny-regular-webfont.woff') format('woff');
+}
+@font-face {
+  font-family: 'SpicyRice';
+  src: url('./assets/SpicyRice-Regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Teaspoon';
+  src: url('./assets/Teaspoon.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Ultra';
+  src: url('./assets/Ultra-webfont.woff') format('woff');
+}
+@font-face {
+  font-family: 'Antipasto';
+  src: url('./assets/antipastopro-demibold-webfont.woff') format('woff');
+}
+.top-level-container {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* LOGIN AND SIGN UP SCREEN STYLING */
+
+body {
+  font-family: 'Antipasto';
+}
+
+button {
+  color: #5c2d91;
+}
+
+.start-screen-container {
+  position: relative;
+  background-color: #6897e8;
+  height: 1000px;
+  margin-top: -50px;
+  width: 100%;
+}
+
+.start-screen-container h1{
+  font-family: 'SpicyRice';
+  font-size: 4em;
+  text-align: center;
+  color: #5C2D91;
+  padding-top: 15%;
+}
+
+.start-screen-container h1 span{
+  color: white;
+  font-weight: 300;
+}
+
+.start-screen-container h3 {
+  margin-top: -20px;
+  color: white;
+  font-weight: 900;
+  font-size: 2em;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.start-screen-container input {
+  outline: none;
+  display: block;
+  color: white;
+  font-size: 1.2em;
+  width: 75%;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-bottom: white solid 1px;
+  background-image:none;
+  background-color:transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+::placeholder {
+   font-family: 'Antipasto';
+   color: white;
+   font-weight: 50;
+   opacity: 0.4;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  { /* mega hack, omg wat */
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;
+}
+
+.start-screen-container a {
+  text-decoration: none;
+}
+
+.start-screen-container button {
+  display: block;
+  font-size: 14px;
+  border-radius: 50px;
+  width: 75%;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+
+.center-vertically {
+  position: absolute;
+  width: 100%;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+
+
+button#red a {
+  color: #bf564c;
+}
+
+button#blue a {
+  color: #5c2d91;
+}
+
+/* User Navbar Styling */
+
+.user-navbar-container ul {
+  list-style-type: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #5c2d91;
+  height: 20px;
+  color: white;
+  font-size: 11px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.user-navbar-container ul > li {
+  flex: 1;
+}
+
+.user-navbar-container button {
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+
+/* Profile Page Styling */
+
+.profile-page-container {
+  position: relative;
+  background-color: #6897e8;
+  width: 100%;
+  height: 100%;
+}
+
+.choose-game-container button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  font-size: 1.5em;
+  font-weight: 900;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.choose-game-container button:last-child {
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 1.2em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+span#bingo-style {
+  font-family: 'SpicyRice';
+  font-size: 1.9em;
+  font-weight: 400;
+  color: #bf564c;
 }
+
+span#bango-style {
+  font-family: 'SpicyRice';
+  font-size: 1.9em;
+  font-weight: 400;
+  color: #5c2d91;
+}
+
+.room-form-container {
+  text-align: center;
+  font-weight: 800;
+  color: white;
+}
+
+.room-form-container input {
+  outline: none;
+  display: block;
+  color: white;
+  font-size: 1.2em;
+  width: 75%;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: white solid 1px;
+  background-image:none;
+  background-color:transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+}
+
+.room-form-container input[type=submit] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  font-family: 'SpicyRice';
+  font-size: 1.9em;
+  font-weight: 400;
+  color: #bf564c;
+}
+
+.room-form-container select {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  outline: none;
+  background-color: white;
+  width: 70%;
+  height: 30px;
+  opacity: 0.7;
+}
+
+input#bango-submit {
+  color: #5c2d91;
+}
+
+@media (max-width: 450px) {
+  .user-navbar-container ul {
+    list-style-type: none;
+    display: flex;
+    background-color: #5c2d91;
+    height: 30px;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .bingo-field {
+    width: 100%;
+    height: 350px;
+  }
+
+  .bingo-box {
+    margin: -1;
+    text-align: center;
+    word-wrap: break-word;
+    font-size: 11px;
+    font-weight: 800;
+    float: left;
+    width: 19%;
+    height: 19%;
+    border: solid black 1px;
+    background-color: white;
+  }
+
+  .activated {
+    background-color: #bf564c;
+    color: white;
+  }
+
+}
+
+@media (min-width: 451px) {
+
 .bingo-field {
-  width: 560px;
-  height: 560px;
+  width: 100%;
+  height: 540px;
 }
 
 .bingo-box {
-  margin: 0;
+  margin: -1;
   text-align: center;
-  font-size: 3.7em;
-  display: inline-block;
-  width: 110px;
-  height: 110px;
+  word-wrap: break-word;
+  font-size: 15px;
+  float: left;
+  width: 19%;
+  height: 19%;
   border: solid black 1px;
+  background-color: white;
 }
 
 .activated {
-  background-color: red;
+  background-color: #bf564c;
+  color: white;
+}
+
+}
+
+.current-value-container {
+
+  animation: rotate infinite 0.8s linear;
+  animation: slidetocenter 1 3s ease-out;
+  /* animation-duration: 0.8s, 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear, ease-out; */
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slidetocenter {
+  0% {
+    transform: translate(500px);
+  }
+
+  100% {
+    transform: translate(0px);
+  }
 }
