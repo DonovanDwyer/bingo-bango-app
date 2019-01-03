@@ -30,8 +30,8 @@ io.on('connection', socket => {
 
   socket.on('victory', function(data){
     io.sockets.to(data.room).emit('winner', data.user)
-    values = {}
-    activeValues = {}
+    values[data.room] = []
+    activeValues[data.room] = []
     theme = ""
     cpu = false
     rooms = rooms.filter(rm => rm.name !== data.room)
@@ -62,7 +62,7 @@ io.on('connection', socket => {
   socket.on('add', (data) => {
     if(activeValues[data.room] && !activeValues[data.room].find(val => val === data.value)){
       activeValues[data.room].push(data.value)
-      socket.broadcast.emit('new', data.value, activeValues[data.room])
+      socket.to(data.room).emit('new', data.value, activeValues[data.room])
     }
   })
 
@@ -99,17 +99,19 @@ io.on('connection', socket => {
   })
 
   socket.on('add_bango_value', (data) => {
-    activeValues[data.room].push(data.value)
-    io.sockets.to(data.room).emit('new_bango_value', activeValues[data.room])
+    if(activeValues[data.room]){
+      activeValues[data.room].push(data.value)
+      io.sockets.to(data.room).emit('new_bango_value', activeValues[data.room])
+    }
   })
 
   socket.on('disconnect', () => {
     console.log(`${socket.id} disconnected`)
-    values = {}
-    activeValues = {}
-    cpu = false
-    theme = ""
-    rooms = []
+    // values = {}
+    // activeValues = {}
+    // cpu = false
+    // theme = ""
+    // rooms = []
   })
 })
 
