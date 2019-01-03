@@ -62,7 +62,7 @@ io.on('connection', socket => {
   socket.on('add', (data) => {
     if(activeValues[data.room] && !activeValues[data.room].find(val => val === data.value)){
       activeValues[data.room].push(data.value)
-      socket.to(data.room).emit('new', data.value, activeValues[data.room])
+      io.sockets.to(data.room).emit('new', data.value, activeValues[data.room])
     }
   })
 
@@ -107,11 +107,11 @@ io.on('connection', socket => {
 
   socket.on('disconnect', () => {
     console.log(`${socket.id} disconnected`)
-    // values = {}
-    // activeValues = {}
-    // cpu = false
-    // theme = ""
-    // rooms = []
+    values = {}
+    activeValues = {}
+    cpu = false
+    theme = ""
+    rooms = []
   })
 })
 
