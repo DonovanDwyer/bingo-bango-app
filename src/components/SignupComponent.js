@@ -24,7 +24,7 @@ class SignupComponent extends Component {
   render(){
     return (
       <div className="start-screen-container">
-        <h1>BINGO<span>BANGO</span></h1>
+        <div id="logo-left"><h1>BINGO</h1></div><div id="logo-right"><h1>BANGO</h1></div>
         <h3>Sign Up</h3>
         <br />
         <form onSubmit={this.handleSubmit}>
@@ -34,6 +34,9 @@ class SignupComponent extends Component {
             value={this.state.username}
             placeholder="Enter Your New Username"
             onChange={this.handleChange}
+            minLength="4"
+            maxLength="12"
+            required
           />
           <br />
           <input
@@ -42,10 +45,16 @@ class SignupComponent extends Component {
             value={this.state.password}
             placeholder="Enter Your New Password"
             onChange={this.handleChange}
+            minLength="4"
+            maxLength="12"
+            required
           />
           <br />
           <button type="submit">Sign Up</button>
         </form>
+        <div className="go-back-container">
+          ...or <a href="/"><u>Go Back</u></a>
+        </div>
       </div>
     )
   }

@@ -57,7 +57,11 @@ class BingoCard extends Component {
   }
 
   activate = value => {
-    this.props.socket.emit('add_bango_value', {value: value, room: this.props.roomName})
+    if (this.props.bingo){
+
+    } else if(!this.state.activeValues.find(val => val === value)){
+      this.props.socket.emit('add_bango_value', {value: value, room: this.props.roomName})
+    }
   }
 
   render() {

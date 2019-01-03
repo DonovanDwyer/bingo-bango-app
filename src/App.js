@@ -20,8 +20,10 @@ class App extends Component {
   renderStartScreen = () => {
     return (
       <div className="start-screen-container">
-        <h1>BINGO<span>BANGO</span></h1>
-        <div className="center-vertically">
+        <div className="logo-container">
+          <div id="logo-left" className="animate-logo-left"><h1>BINGO</h1></div><div id="logo-right" className="animate-logo-right"><h1>BANGO</h1></div>
+        </div>
+        <div className="start-screen-buttons center-vertically">
         <button id="red"><Link to="/signup">Sign Up for a New Account</Link></button>
         <br/>
         <button id="blue"><Link to="/login">Log In to an Existing Account</Link></button>

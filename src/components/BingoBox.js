@@ -5,6 +5,6 @@ export const BingoBox = props => {
         className={props.id === "n3" ? "bingo-box activated" : props.active}
         onClick={() => props.clickHandler(props.value)}
       >
-      <p>{props.value}</p>
+      {props.id === "n3" ? <p id="free-box">FREE</p> : <p>{props.value}</p>}
     </div>
 }

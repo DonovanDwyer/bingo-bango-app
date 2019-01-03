@@ -1,7 +1,10 @@
+let BASEURL = "http://10.39.108.193:4000"
+// const BASEURL = "http://localhost:4000"
+
 export function addUser(user) {
   return (dispatch) => {
     dispatch({ type: 'LOADING' });
-    return fetch("http://localhost:4000/api/v1/users", {
+    return fetch(`${BASEURL}/api/v1/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +24,7 @@ export function addUser(user) {
 export function getUser(user) {
   return (dispatch) => {
     dispatch({ type: 'LOADING' });
-    return fetch("http://localhost:4000/api/v1/login", {
+    return fetch(`${BASEURL}/api/v1/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +44,7 @@ export function getUser(user) {
 
 export function increaseWins(user) {
   return (dispatch) => {
-    return fetch(`http://localhost:4000/api/v1/users/${user.id}`, {
+    return fetch(`${BASEURL}/api/v1/users/${user.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +63,7 @@ export function increaseWins(user) {
 
 export function increaseLosses(user) {
   return (dispatch) => {
-    return fetch(`http://localhost:4000/api/v1/users/${user.id}`, {
+    return fetch(`${BASEURL}/api/v1/users/${user.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -83,7 +86,7 @@ export function logUserOut() {
 
 export function checkAuth(token){
   return (dispatch) => {
-    return fetch(`http://localhost:4000/api/v1/profile`, {
+    return fetch(`${BASEURL}/api/v1/profile`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`
@@ -95,7 +98,7 @@ export function checkAuth(token){
 export function getUserViaToken(token) {
   return (dispatch) => {
     dispatch({ type: 'LOADING' });
-    return fetch("http://localhost:4000/api/v1/profile", {
+    return fetch(`${BASEURL}/api/v1/profile`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`

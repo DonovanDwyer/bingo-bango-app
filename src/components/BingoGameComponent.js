@@ -3,6 +3,7 @@ import BingoCard from './BingoCard';
 import {connect} from 'react-redux';
 import {increaseWins, increaseLosses} from '../actions/userActions'
 import CPUSocketContainer from './CPUSocketContainer'
+import {CSSTransition} from 'react-transition-group'
 
 
 class BingoGameComponent extends Component {
@@ -67,16 +68,28 @@ class BingoGameComponent extends Component {
     return (
       <div>
       {this.state.winner ? (
-        <div>
+        <div className="game-win-screen">
           <h1>{this.state.winner}</h1>
           <button onClick={this.props.reset}>Go to Profile</button>
         </div>
       ) : (
       <div>
         <CPUSocketContainer values={total} activeValues={this.activeValues} roomName={this.props.roomName} />
-        <h1>Current number: {this.state.currentNum}</h1>
-        <h1>BINGO</h1>
-        <BingoCard socket={this.props.io} user={this.props.currentUser} values={this.values} roomName={this.props.roomName} />
+        <div className="game-name-container">
+        <div className="game-name-letter-box-bingo">B</div>
+        <div className="game-name-letter-box-bingo">I</div>
+        <div className="game-name-letter-box-bingo">N</div>
+        <div className="game-name-letter-box-bingo">G</div>
+        <div className="game-name-letter-box-bingo">O</div>
+        </div>
+        <BingoCard socket={this.props.io} user={this.props.currentUser} values={this.values} roomName={this.props.roomName} bingo={() => true} />
+        <CSSTransition
+          key={this.state.currentNum}
+          timeout={500}
+          classNames="val"
+        >
+          {this.state.currentNum ? <div className="current-value"><h2>Current number: {this.state.currentNum}</h2></div> : <div></div>}
+        </CSSTransition>
       </div>
       )}
       </div>

@@ -17,14 +17,19 @@ class LoginComponent extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.getThisUser(this.state)
+    this.props.getThisUser(this.state).then((res) => {
+      if(res.payload.message){
+        localStorage.clear();
+        this.props.history.push('/');
+      }
+    })
     this.props.history.push("/profile")
   }
 
   render(){
     return (
       <div className="start-screen-container">
-        <h1>BINGO<span>BANGO</span></h1>
+      <div id="logo-left"><h1>BINGO</h1></div><div id="logo-right"><h1>BANGO</h1></div>
         <h3>Log In</h3>
         <br />
         <form onSubmit={this.handleSubmit}>
@@ -34,6 +39,9 @@ class LoginComponent extends Component {
             value={this.state.username}
             placeholder="Enter Your Username"
             onChange={this.handleChange}
+            required
+            minLength="4"
+            maxLength="12"
           />
           <br />
           <input
@@ -42,10 +50,16 @@ class LoginComponent extends Component {
             value={this.state.password}
             placeholder="Enter Your Password"
             onChange={this.handleChange}
+            required
+            minLength="4"
+            maxLength="12"
           />
           <br />
           <button type="submit">Login</button>
         </form>
+        <div className="go-back-container">
+          ...or <a href="/"><u>Go Back</u></a>
+        </div>
       </div>
     )
   }

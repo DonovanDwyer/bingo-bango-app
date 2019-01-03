@@ -5,17 +5,22 @@ import {valueGetter} from '../actions/bangoActions'
 import socketIO from 'socket.io-client'
 import BangoGameComponent from './BangoGameComponent'
 import BingoGameComponent from './BingoGameComponent'
+import Editor from './EditComponent'
+
+// const BASEURL = "http://localhost:9001"
+const BASEURL = "http://53285bc3.ngrok.io"
 
 class ProfileComponent extends Component {
 
   constructor(props){
     super(props)
-    this.io = socketIO("http://localhost:9001")
+    this.io = socketIO(BASEURL)
     this.state = {
       theme: "",
       roomName: "",
       gameChosen: false,
-      roomList: []
+      roomList: [],
+      editMode: false
     }
   }
 
@@ -23,7 +28,8 @@ class ProfileComponent extends Component {
     setTimeout( () => {
       return this.props.authorizeUser(localStorage.getItem('token')).then(json => {
         if(json.message === "Please Log In"){
-          this.props.history.push('/')
+          localStorage.clear();
+          this.props.history.push('/');
         }
       })
     }, 500)
@@ -34,6 +40,7 @@ class ProfileComponent extends Component {
   }
 
   resetProfileScreen = () => {
+    this.io.removeAllListeners();
     this.setState({
       theme: "",
       gameChosen: false,
@@ -42,8 +49,9 @@ class ProfileComponent extends Component {
     })
   }
 
-  startBingoGame = () => {
+  startBingoGame = e => {
     let name;
+    e.preventDefault();
     this.state.roomName === "" ? name = `${this.props.currentUser.username}'s Room` : name = this.state.roomName
     this.io.emit("new_game_room", {name: name, type: "bingo"})
     this.setState({
@@ -76,7 +84,7 @@ class ProfileComponent extends Component {
 
   handleButton = () => {
     this.setState({
-      theme: "familydinner"
+      theme: "Dinner With The Family"
     })
   }
 
@@ -110,10 +118,13 @@ class ProfileComponent extends Component {
 
   renderRoomList = () => {
     let arrayOfRooms = this.state.roomList.map(room => <option value={room.name} key={room.name}>{room.name} - {room.type} Game</option>)
-    return <form onSubmit={this.joinRoom}>
+    return <form onSubmit={this.joinRoom} className="room-form-container center-vertically">
+      <label>
+      Select a room:<br/>
       <select name="roomName" onChange={this.handleChange}>
         {arrayOfRooms}
       </select>
+      </label>
       <input type="submit" />
     </form>
   }
@@ -136,10 +147,9 @@ class ProfileComponent extends Component {
         <label>
         Select your Bango theme:<br/>
           <select name="theme" onChange={this.handleChange}>
-            <option default value="familydinner">Dinner With The Family</option>
-            <option value="officeday">Typical Day in the Office</option>
-            <option value="barnight">Night at the Bar</option>
-            <option value="party">Party Time</option>
+            <option default value="Dinner With The Family">Dinner With The Family</option>
+            <option value="Typical Day in the Office">Typical Day in the Office</option>
+            <option value="Party Time">Party Time</option>
           </select>
         </label>
         <br />
@@ -153,15 +163,25 @@ class ProfileComponent extends Component {
     this.setState({gameChosen: "pending"})
   }
 
+  switchToEditMode = () => {
+    this.setState({editMode: true})
+  }
+
+  exitEditMode = () => {
+    this.setState({editMode: false})
+  }
+
   render(){
     const {currentUser} = this.props;
     let finalDiv;
-    if(this.state.gameChosen === "bingo"){
+    if (this.state.editMode){
+      finalDiv = <Editor exit={this.exitEditMode} />
+    } else if (this.state.gameChosen === "bingo"){
       finalDiv = <BingoGameComponent io={this.io} reset={this.resetProfileScreen} roomName={this.state.roomName} />
     } else if(this.state.gameChosen === "bango"){
       finalDiv = <BangoGameComponent io={this.io} reset={this.resetProfileScreen} roomName={this.state.roomName} />
     } else if(this.state.gameChosen === "pending"){
-      finalDiv = <form onSubmit={this.startBingoGame} className="room-form-container center-vertically center-horizontally">
+      finalDiv = <form onSubmit={this.startBingoGame} className="room-form-container center-vertically">
         <label>
           Game Room Name:
           <input
@@ -183,6 +203,7 @@ class ProfileComponent extends Component {
       <button onClick={this.handleButton}>Start a New <span id="bango-style">Bango</span> Game</button><br />
       <button onClick={this.showRooms}>Join a Game</button></div>
     }
+
     return (
       <div className="profile-page-container">
         <div className="user-navbar-container">

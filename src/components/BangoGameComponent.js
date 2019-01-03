@@ -3,6 +3,7 @@ import BingoCard from './BingoCard';
 import {connect} from 'react-redux';
 import {increaseWins, increaseLosses} from '../actions/userActions'
 import {valueGetter} from '../actions/bangoActions'
+import {CSSTransition} from 'react-transition-group'
 
 
 class BangoGameComponent extends Component {
@@ -61,29 +62,32 @@ class BangoGameComponent extends Component {
     }
     return array;
   }
-
-  runCountdown = () => {
-    setTimeout(() => this.setState({countdown: false}), 1000)
-    return <div><h1>Bango game will begin in 1 second(s)</h1></div>
-  }
-
+  
   render(){
     let finalDiv;
     if(this.state.winner){
-      finalDiv = <div>
+      finalDiv = <div className="game-win-screen">
         <h1>{this.state.winner}</h1>
         <button onClick={() => this.props.reset()}>Go to Profile</button>
       </div>
-    } else if(this.state.countdown === true){
-      finalDiv = this.runCountdown()
     } else {
       finalDiv = <div>
-        <div className="current-value-container">
-          <h2>Current value: {this.state.currentVal}</h2>
+        <div className="game-name-container">
+        <div className="game-name-letter-box-bango">B</div>
+        <div className="game-name-letter-box-bango">A</div>
+        <div className="game-name-letter-box-bango">N</div>
+        <div className="game-name-letter-box-bango">G</div>
+        <div className="game-name-letter-box-bango">O</div>
         </div>
-        <h1>BANGO</h1>
         {this.state.values &&
           <BingoCard user={this.props.currentUser} values={this.shuffleArray(this.state.values)} socket={this.props.io} roomName={this.props.roomName} />}
+          <CSSTransition
+            key={this.state.currentVal}
+            timeout={500}
+            classNames="val"
+          >
+            {this.state.currentVal ? <div className="current-value"><h2>Current value: {this.state.currentVal}</h2></div> : <div></div>}
+          </CSSTransition>
       </div>
     }
 

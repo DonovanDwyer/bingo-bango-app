@@ -8,34 +8,8 @@ Lavender: #5c2d91
 Heavy Sky: #6897e8
  */
 @font-face {
-  font-family: 'Komika';
-  src: url('./assets/komtit.woff') format('woff'),
-  url('./assets/komtit.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Komika 2';
-  src: url('./assets/komtits.woff') format('woff'),
-  url('./assets/komtits.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Bigfish';
-  src: url('./assets/Bigfish.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Coiny';
-  src: url('./assets/coiny-regular-webfont.woff') format('woff');
-}
-@font-face {
   font-family: 'SpicyRice';
   src: url('./assets/SpicyRice-Regular.otf') format('opentype');
-}
-@font-face {
-  font-family: 'Teaspoon';
-  src: url('./assets/Teaspoon.otf') format('opentype');
-}
-@font-face {
-  font-family: 'Ultra';
-  src: url('./assets/Ultra-webfont.woff') format('woff');
 }
 @font-face {
   font-family: 'Antipasto';
@@ -66,7 +40,7 @@ button {
   width: 100%;
 }
 
-.start-screen-container h1{
+.start-screen-container h1 {
   font-family: 'SpicyRice';
   font-size: 4em;
   text-align: center;
@@ -74,13 +48,47 @@ button {
   padding-top: 15%;
 }
 
-.start-screen-container h1 span{
+.start-screen-container #logo-right h1 {
+  padding: 0;
+  margin: -90px;
   color: white;
   font-weight: 300;
+
+}
+
+.animate-logo-left {
+  transform: translateX(-100%);
+  animation: 0.4s ease-out 0.7s 1 slideinfromleft;
+  animation-fill-mode: forwards;
+}
+
+.animate-logo-right {
+  transform: translateX(100%);
+  animation: 0.4s ease-out 1.4s 1 slideinfromright;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideinfromleft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideinfromright {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 .start-screen-container h3 {
-  margin-top: -20px;
+  margin-top: 100px;
+  margin-bottom: 0;
   color: white;
   font-weight: 900;
   font-size: 2em;
@@ -124,16 +132,23 @@ input:-webkit-autofill:active  { /* mega hack, omg wat */
   text-decoration: none;
 }
 
+.go-back-container {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+
 .start-screen-container button {
   display: block;
   font-size: 14px;
+  font-weight: 500;
   border-radius: 50px;
-  width: 75%;
-  height: 50px;
   margin-left: auto;
   margin-right: auto;
   background-color: white;
+  transition: font-size 0.1s ease-out 0s;
 }
+
 
 .center-vertically {
   position: absolute;
@@ -144,14 +159,6 @@ input:-webkit-autofill:active  { /* mega hack, omg wat */
 
 
 
-button#red a {
-  color: #bf564c;
-}
-
-button#blue a {
-  color: #5c2d91;
-}
-
 /* User Navbar Styling */
 
 .user-navbar-container ul {
@@ -160,7 +167,7 @@ button#blue a {
   background-color: #5c2d91;
   height: 20px;
   color: white;
-  font-size: 11px;
+  font-size: 19px;
   font-weight: 900;
   margin: 0;
 }
@@ -179,7 +186,6 @@ button#blue a {
 	outline: inherit;
 }
 
-
 /* Profile Page Styling */
 
 .profile-page-container {
@@ -189,41 +195,6 @@ button#blue a {
   height: 100%;
 }
 
-.choose-game-container button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-  font-size: 1.5em;
-  font-weight: 900;
-  color: white;
-}
-
-.choose-game-container button:last-child {
-  margin-top: 20px;
-  font-weight: 600;
-  font-size: 1.2em;
-}
-
-span#bingo-style {
-  font-family: 'SpicyRice';
-  font-size: 1.9em;
-  font-weight: 400;
-  color: #bf564c;
-}
-
-span#bango-style {
-  font-family: 'SpicyRice';
-  font-size: 1.9em;
-  font-weight: 400;
-  color: #5c2d91;
-}
 
 .room-form-container {
   text-align: center;
@@ -234,14 +205,16 @@ span#bango-style {
 .room-form-container input {
   outline: none;
   display: block;
+  margin-top: 20px;
   color: white;
-  font-size: 1.2em;
+  font-size: 1.5em;
   width: 75%;
   height: 50px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
   border: none;
+  border-radius: none;
   border-bottom: white solid 1px;
   background-image:none;
   background-color:transparent;
@@ -251,52 +224,199 @@ span#bango-style {
 
 }
 
-.room-form-container input[type=submit] {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-  font-family: 'SpicyRice';
-  font-size: 1.9em;
-  font-weight: 400;
-  color: #bf564c;
-}
 
 .room-form-container select {
   margin-top: 10px;
+  font-size: 20px;
+  font-family: "Antipasto";
   margin-bottom: 10px;
+  font-weight: 800;
   outline: none;
   background-color: white;
-  width: 70%;
-  height: 30px;
-  opacity: 0.7;
+  width: 60%;
+  height: 40px;
 }
 
-input#bango-submit {
-  color: #5c2d91;
+.game-win-screen h1 {
+  text-align: center;
+  color: white;
+  font-size: 40px;
 }
+
 
 @media (max-width: 450px) {
+
+  .game-win-screen button {
+    border-radius: 5px;
+    border: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #a7c2f1;
+    color: white;
+    font-size: 15px;
+    font-family: 'Antipasto';
+    height: 40px;
+    width: 75%;
+  }
+
+  .start-screen-buttons {
+    margin-top: -60px;
+  }
+
+  .start-screen-container button {
+    border: none;
+    background-color: #a7c2f1;
+    color: white;
+    height: 70px;
+    width: 75%;
+    transition: background-color 0s ease-out 0s;
+  }
+
+  .start-screen-container button:active,
+  .start-screen-container button:hover,
+  .start-screen-container button:focus {
+    background-color: white;
+    text-shadow: white 0 0 15px;
+  }
+
+  .start-screen-container button a {
+    color: white;
+    font-family: "Antipasto";
+    font-size: 20px;
+    transition: color 0s ease-out 0s;
+  }
+
+  .room-form-container input {
+    border: white solid 1px;
+  }
+
+  .room-form-container input[type=submit] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background: none;
+  	color: inherit;
+  	border: none;
+  	padding: 0;
+  	font: inherit;
+  	cursor: pointer;
+  	outline: inherit;
+    font-family: 'SpicyRice';
+    font-size: 1.9em;
+    font-weight: 400;
+    color: #bf564c;
+    transition: text-shadow 0.2s ease-in 0s;
+  }
+
+  input#bango-submit {
+    color: #5c2d91;
+  }
+
+
+  .room-form-container input[type=submit]:active {
+    background-color: white;
+  }
+
+  .choose-game-container button:first-child {
+    margin-top: 80px;
+  }
+
+  .choose-game-container button {
+    display:block;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 50px;
+    border: none;
+    width: 75%;
+    margin-top: 10px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #a7c2f1;
+    color: white;
+    font-family: 'Antipasto';
+    transition: background-color 0.3s ease-out 0s;
+  }
+
+  .choose-game-container button:active {
+    background-color: white;
+  }
+
+  span#bingo-style {
+    font-family: 'SpicyRice';
+    font-size: 25px;
+    font-weight: 400;
+    color: #bf564c;
+  }
+
+  span#bango-style {
+    font-family: 'SpicyRice';
+    font-size: 25px;
+    font-weight: 400;
+    color: #5c2d91;
+  }
+
+
+  .room-form-container select {
+    font-size: 15px;
+  }
+
   .user-navbar-container ul {
     list-style-type: none;
     display: flex;
     background-color: #5c2d91;
     height: 30px;
     color: white;
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 700;
     margin: 0;
   }
 
+  .game-name-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    width: 95%;
+    height: 50px;
+  }
+
+  .game-name-letter-box-bango {
+    height: 100%;
+    width: 19%;
+    float: left;
+    text-align: center;
+    margin: 0;
+    font-family: 'SpicyRice';
+    font-size: 40px;
+    color: white;
+    background-color: #5c2d91;
+    border: solid black 1px;
+  }
+
+  .game-name-letter-box-bingo {
+    height: 100%;
+    width: 19%;
+    float: left;
+    text-align: center;
+    margin: 0;
+    font-family: 'SpicyRice';
+    font-size: 40px;
+    color: white;
+    background-color: #bf564c;
+    border: solid black 1px;
+  }
+
   .bingo-field {
-    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-left: 10px;
+    width: 95%;
     height: 350px;
   }
 
@@ -304,8 +424,8 @@ input#bango-submit {
     margin: -1;
     text-align: center;
     word-wrap: break-word;
-    font-size: 11px;
-    font-weight: 800;
+    font-size: 9px;
+    font-weight: 900;
     float: left;
     width: 19%;
     height: 19%;
@@ -314,17 +434,257 @@ input#bango-submit {
   }
 
   .activated {
-    background-color: #bf564c;
+    background-color: #ff3333;
     color: white;
+  }
+
+  #free-box {
+    font-family: 'SpicyRice';
+    font-size: 20px;
+  }
+
+  .current-value {
+    font-family: 'SpicyRice';
+    animation: slidetocenter 1 4s ease-in-out;
+    text-align: center;
+    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -10px;
+    font-size: 12px;
+    width: 300px;
+    word-wrap: break-word;
+  }
+
+  @keyframes slidetocenter {
+    0% {
+      transform: scale(1) translate(0%);
+    }
+
+    15% {
+      transform: translateY(-250px);
+      text-shadow: white 0 0 10px;
+      font-family: 'SpicyRice';
+      font-size: 20px;
+      font-weight: 400;
+      color: #5c2d91;
+      width: 100%;
+    }
+
+    85% {
+      transform: translateY(-250px);
+      text-shadow: white 0 0 10px;
+      font-family: 'SpicyRice';
+      font-weight: 400;
+      font-size: 20px;
+      color: #5c2d91;
+      width: 100%;
+    }
+
+    100% {
+      transform: scale(1) translate(0%);
+    }
   }
 
 }
 
 @media (min-width: 451px) {
 
+  .game-win-screen button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background: none;
+  	color: inherit;
+  	border: none;
+  	padding: 0;
+  	font: inherit;
+  	cursor: pointer;
+  	outline: inherit;
+    font-family: 'SpicyRice';
+    font-size: 1.9em;
+    font-weight: 400;
+    color: #ffccff;
+    transition: text-shadow 0.2s ease-in 0s;
+  }
+
+  .game-win-screen button:hover {
+    animation: pulsate infinite 0.7s ease-in-out;
+    text-shadow: white 0px 0px 6px;
+  }
+
+  .game-win-screen button:active {
+    color: gray;
+  }
+
+  .start-screen-container button {
+    height: 40px;
+    width: 45%;
+  }
+
+  .start-screen-container button:hover {
+    font-size: 20px;
+    font-weight: 900;
+    background-color: #ffccff;
+    text-shadow: white 0 0 10px;
+  }
+
+  .start-screen-container button:active {
+    font-size: 18px;
+    font-weight: 800;
+    background-color: gray;
+    text-shadow: none;
+  }
+
+  button#red a {
+    color: #bf564c;
+  }
+
+  button#blue a {
+    color: #5c2d91;
+  }
+
+  .room-form-container input[type=submit] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background: none;
+  	color: inherit;
+  	border: none;
+  	padding: 0;
+  	font: inherit;
+  	cursor: pointer;
+  	outline: inherit;
+    font-family: 'SpicyRice';
+    font-size: 1.9em;
+    font-weight: 400;
+    color: #bf564c;
+    transition: text-shadow 0.2s ease-in 0s;
+    }
+
+    input#bango-submit {
+      color: #5c2d91;
+    }
+
+
+  .room-form-container input[type=submit]:hover {
+    animation: pulsate infinite 0.7s ease-in-out;
+    text-shadow: white 0px 0px 6px;
+  }
+
+  .room-form-container input[type=submit]:active {
+    color: gray;
+  }
+
+
+  .choose-game-container button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: none;
+  	color: inherit;
+  	border: none;
+  	padding: 0;
+  	font: inherit;
+  	cursor: pointer;
+  	outline: inherit;
+    font-size: 40px;
+    font-weight: 900;
+    color: white;
+    transition: text-shadow 0.2s ease-in 0s;
+  }
+
+  .choose-game-container button:hover {
+    animation: pulsate infinite 0.7s ease-in-out;
+    text-shadow: white 0px 0px 6px;
+  }
+
+  .choose-game-container button:active {
+    color: gray;
+  }
+
+  .choose-game-container button:last-child {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 1.2em;
+  }
+
+  span#bingo-style {
+    font-family: 'SpicyRice';
+    font-size: 1.9em;
+    font-weight: 400;
+    color: #bf564c;
+  }
+
+  span#bango-style {
+    font-family: 'SpicyRice';
+    font-size: 1.9em;
+    font-weight: 400;
+    color: #5c2d91;
+  }
+
+  @keyframes pulsate {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .user-navbar-container li:first-child {
+    margin-left: 80px;
+  }
+
+
+  .game-name-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 0;
+    width: 520px;
+    height: 90px;
+  }
+
+  .game-name-letter-box-bango {
+    height: 100%;
+    width: 19%;
+    float: left;
+    text-align: center;
+    margin: 0;
+    font-family: 'SpicyRice';
+    font-size: 70px;
+    color: white;
+    background-color: #5c2d91;
+    border: solid black 1px;
+  }
+
+  .game-name-letter-box-bingo {
+    height: 100%;
+    width: 19%;
+    float: left;
+    text-align: center;
+    margin: 0;
+    font-family: 'SpicyRice';
+    font-size: 70px;
+    color: white;
+    background-color: #bf564c;
+    border: solid black 1px;
+  }
+
 .bingo-field {
-  width: 100%;
-  height: 540px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 520px;
+  height: 500px;
 }
 
 .bingo-box {
@@ -340,39 +700,56 @@ input#bango-submit {
 }
 
 .activated {
-  background-color: #bf564c;
+  background-color: #ff3333;
   color: white;
 }
 
+#free-box {
+  font-family: 'SpicyRice';
+  font-size: 30px;
 }
 
-.current-value-container {
-
-  animation: rotate infinite 0.8s linear;
-  animation: slidetocenter 1 3s ease-out;
-  /* animation-duration: 0.8s, 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear, ease-out; */
+.current-value {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -20px;
+  font-size: 15px;
+  width: 500px;
+  animation: slidetocenter2 1 4s ease-in-out;
+  text-align: center;
+  color: white;
+  word-wrap: break-word;
 }
 
-@keyframes rotate {
+@keyframes slidetocenter2 {
   0% {
-    transform: rotate(0deg);
+    transform: scale(1) translate(0%);
   }
-  50% {
-    transform: rotate(180deg);
+
+  15% {
+    transform: translateY(-350px);
+    text-shadow: white 0 0 20px;
+    font-family: 'SpicyRice';
+    font-weight: 300;
+    font-size: 30px;
+    color: #5c2d91;
+    width: 100%;
   }
+
+  85% {
+    transform: translateY(-350px);
+    text-shadow: white 0 0 15px;
+    font-family: 'SpicyRice';
+    font-weight: 300;
+    font-size: 30px;
+    color: #5c2d91;
+    width: 100%;
+  }
+
   100% {
-    transform: rotate(360deg);
+    transform: scale(1) translate(0%);
   }
 }
 
-@keyframes slidetocenter {
-  0% {
-    transform: translate(500px);
-  }
-
-  100% {
-    transform: translate(0px);
-  }
 }

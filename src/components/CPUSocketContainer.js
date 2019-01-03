@@ -3,11 +3,14 @@ import {connect} from 'react-redux';
 import {activateValue} from '../actions/bingoActions'
 import socketIO from 'socket.io-client'
 
+// const BASEURL = "http://localhost:9001"
+const BASEURL = "http://73238a39.ngrok.io"
+
 class CPUSocketContainer extends Component {
 
   constructor(props){
     super(props)
-    this.io = socketIO('http://localhost:9001')
+    this.io = socketIO(BASEURL)
     this.state = {
       current: null
     }
@@ -18,7 +21,7 @@ class CPUSocketContainer extends Component {
     this.io.emit('check_cpu_status', {})
     this.io.on('give_cpu_status', (data) => {
       if(!data){
-        timer = setInterval(this.runTheMachine, 2000)
+        timer = setInterval(this.runTheMachine, 3000)
         this.io.emit('cpu_running', {})
       }
     })
