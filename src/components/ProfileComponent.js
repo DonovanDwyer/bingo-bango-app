@@ -8,8 +8,8 @@ import BingoGameComponent from './BingoGameComponent'
 import Editor from './EditComponent'
 
 // const BASEURL = "http://localhost:9001"
-const BASEURL = ":9001"
-// const BASEURL = "http://53285bc3.ngrok.io"
+// const BASEURL = ":9001"
+const BASEURL = "https://cbd0bac4.ngrok.io"
 
 class ProfileComponent extends Component {
 

@@ -4,8 +4,8 @@ import {activateValue} from '../actions/bingoActions'
 import socketIO from 'socket.io-client'
 
 // const BASEURL = "http://localhost:9001"
-const BASEURL = ":9001"
-// const BASEURL = "http://73238a39.ngrok.io"
+// const BASEURL = ":9001"
+const BASEURL = "https://cbd0bac4.ngrok.io"
 
 class CPUSocketContainer extends Component {
 
