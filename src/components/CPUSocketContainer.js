@@ -19,16 +19,16 @@ class CPUSocketContainer extends Component {
 
   componentDidMount = () => {
     let timer;
-    this.io.emit('check_cpu_status', {})
+    this.io.emit('check_cpu_status', this.props.roomName)
     this.io.on('give_cpu_status', (data) => {
       if(!data){
         timer = setInterval(this.runTheMachine, 3000)
-        this.io.emit('cpu_running', {})
+        this.io.emit('cpu_running', this.props.roomName)
       }
     })
     this.io.on('winner', function(){
       clearInterval(timer)
-      this.io.emit('cpu_dying', {})
+      this.io.emit('cpu_dying', this.props.roomName)
     })
   }
 

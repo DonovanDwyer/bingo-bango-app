@@ -14,7 +14,7 @@ const io = socketIO(http)
 
 let values = {}
 let activeValues = {}
-let cpu = false
+let cpu = {}
 let theme = ""
 let rooms = []
 
@@ -33,7 +33,7 @@ io.on('connection', socket => {
     values[data.room] = []
     activeValues[data.room] = []
     theme = ""
-    cpu = false
+    cpu[data.room] = false
     rooms = rooms.filter(rm => rm.name !== data.room)
   })
 
@@ -67,15 +67,15 @@ io.on('connection', socket => {
   })
 
   socket.on('check_cpu_status', (data) => {
-    socket.emit('give_cpu_status', cpu)
+    socket.emit('give_cpu_status', cpu[data])
   })
 
   socket.on('cpu_running', (data) => {
-    cpu = true
+    cpu[data] = true
   })
 
   socket.on('cpu_dying', (data) => {
-    cpu = false
+    cpu[data] = false
   })
 
   // BANGO Game Functionality
