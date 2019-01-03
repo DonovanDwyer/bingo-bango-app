@@ -34,6 +34,7 @@ io.on('connection', socket => {
     activeValues = {}
     theme = ""
     cpu = false
+    rooms = rooms.filter(rm => rm.name !== data.room)
   })
 
   socket.on('new_game_room', roomData => {
