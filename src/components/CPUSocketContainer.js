@@ -4,7 +4,7 @@ import {activateValue} from '../actions/bingoActions'
 import socketIO from 'socket.io-client'
 
 // const BASEURL = "http://localhost:9001"
-const BASEURL = window.location.hostname
+const BASEURL = "bingobango-frontend.herokuapp.com:9001"
 // const BASEURL = "http://73238a39.ngrok.io"
 
 class CPUSocketContainer extends Component {

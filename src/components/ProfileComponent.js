@@ -8,7 +8,7 @@ import BingoGameComponent from './BingoGameComponent'
 import Editor from './EditComponent'
 
 // const BASEURL = "http://localhost:9001"
-const BASEURL = window.location.hostname
+const BASEURL = "bingobango-frontend.herokuapp.com:9001"
 // const BASEURL = "http://53285bc3.ngrok.io"
 
 class ProfileComponent extends Component {
