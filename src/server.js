@@ -104,6 +104,8 @@ io.on('connection', socket => {
   })
 })
 
+const port = process.env.PORT || 9001
+
 http.listen(9001, function(){
   console.log('its over 9000!!!')
 })

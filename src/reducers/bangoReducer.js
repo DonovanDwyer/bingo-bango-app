@@ -1,5 +1,6 @@
 import socketIO from 'socket.io-client'
-const BASEURL = "http://localhost:9001"
+// const BASEURL = "http://localhost:9001"
+const BASEURL = window.location.hostname
 // const BASEURL = "http://53285bc3.ngrok.io"
 
 export function bangoReducer(state = [], action){
