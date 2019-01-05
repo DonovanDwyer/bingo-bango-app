@@ -753,3 +753,11 @@ input:-webkit-autofill:active  { /* mega hack, omg wat */
 }
 
 }
+
+
+@media (min-width: 1000px) {
+  .start-screen-buttons {
+    margin-top: 0px;
+  }
+
+}
