@@ -15,7 +15,7 @@ class ProfileComponent extends Component {
 
   constructor(props){
     super(props)
-    this.io = socketIO(window.location.hostname)
+    this.io = socketIO()
     this.state = {
       theme: "",
       roomName: "",
