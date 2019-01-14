@@ -6,9 +6,12 @@
 
 const express = require('express');
 const socketIO = require('socket.io');
+const path = require('path');
 const PORT = process.env.PORT || 9001;
+const INDEX = path.join(__dirname, 'index.html');
 const server = express()
-  .listen(PORT, () => console.log(`Listening on port ${PORT}`));
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on port ${PORT}`, process.env.PORT));
 
 const io = socketIO(server);
 
@@ -19,9 +22,9 @@ let theme = ""
 let rooms = []
 
 
-app.get('/', function(req, res){
-  res.send('<h1>Running socket server...</h1>');
-})
+// app.get('/', function(req, res){
+//   res.send('<h1>Running socket server...</h1>');
+// })
 
 io.on('connection', socket => {
   console.log(`${socket.id} connected`)
