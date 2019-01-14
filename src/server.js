@@ -1,21 +1,19 @@
-// const app = require('express')();
-// const http = require('http').Server(app);
-// const socketIO = require('socket.io')
+const app = require('express')();
+const http = require('http').Server(app);
+const socketIO = require('socket.io')
 
-// const io = socketIO(http)
+const io = socketIO(http)
 
-const express = require('express');
-const socketIO = require('socket.io');
-const path = require('path');
-const PORT = process.env.PORT || 9001;
-const INDEX = path.join(__dirname, 'index.html');
-const server = express()
-  .use((req, res) => res.sendFile(INDEX) )
-  .listen(PORT, () => console.log(`Listening on port ${PORT}`, process.env.PORT));
-
-const io = socketIO(server);
-io.set('origins', '*:*');
-io.set('match origin protocol', true);
+// const express = require('express');
+// const socketIO = require('socket.io');
+// const path = require('path');
+// const PORT = 9001;
+// const INDEX = path.join(__dirname, 'index.html');
+// const server = express()
+//   .use((req, res) => res.sendFile(INDEX) )
+//   .listen(PORT, () => console.log(`Listening on port ${PORT}`, process.env.PORT));
+//
+// const io = socketIO(server);
 
 let values = {}
 let activeValues = {}
@@ -122,6 +120,6 @@ io.on('connection', socket => {
 
 // const port = process.env.PORT || 9001
 
-// http.listen(9001, function(){
-//   console.log('its over 9000!!!')
-// })
+http.listen(9001, function(){
+  console.log('its over 9000!!!')
+})
