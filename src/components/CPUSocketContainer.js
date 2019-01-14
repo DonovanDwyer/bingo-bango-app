@@ -11,7 +11,7 @@ class CPUSocketContainer extends Component {
 
   constructor(props){
     super(props)
-    this.io = socketIO()
+    this.io = socketIO(window.location.hostname)
     this.state = {
       current: null
     }
