@@ -4,14 +4,14 @@ import {activateValue} from '../actions/bingoActions'
 import socketIO from 'socket.io-client'
 
 // const BASEURL = "http://localhost:9001"
-const BASEURL = ":80"
+const BASEURL = "bingobango-frontend.herokuapp.com"
 // const BASEURL = "https://cbd0bac4.ngrok.io"
 
 class CPUSocketContainer extends Component {
 
   constructor(props){
     super(props)
-    this.io = socketIO(BASEURL)
+    this.io = socketIO(BASEURL, {transports: ['websocket']})
     this.state = {
       current: null
     }
