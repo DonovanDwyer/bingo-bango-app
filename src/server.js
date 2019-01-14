@@ -14,6 +14,8 @@ const server = express()
   .listen(PORT, () => console.log(`Listening on port ${PORT}`, process.env.PORT));
 
 const io = socketIO(server);
+io.set('origins', '*:*');
+io.set('match origin protocol', true);
 
 let values = {}
 let activeValues = {}
