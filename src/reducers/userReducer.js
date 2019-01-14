@@ -1,8 +1,6 @@
 export function userReducer(state = "", action) {
   let user;
   switch(action.type){
-    case 'LOADING':
-      return ""
 
     case 'ADD_USER':
       if (action.payload.user){

@@ -15,7 +15,7 @@ class ProfileComponent extends Component {
 
   constructor(props){
     super(props)
-    this.io = socketIO(BASEURL)
+    this.io = socketIO()
     this.state = {
       theme: "",
       roomName: "",
@@ -202,7 +202,9 @@ class ProfileComponent extends Component {
     } else {
       finalDiv = <div className="choose-game-container center-vertically"><button onClick={this.renderBingoMenu}>Start a New <span id="bingo-style">Bingo</span> Game</button><br />
       <button onClick={this.handleButton}>Start a New <span id="bango-style">Bango</span> Game</button><br />
-      <button onClick={this.showRooms}>Join a Game</button></div>
+      <button onClick={this.showRooms}>Join a Game</button>
+      <button onClick={this.switchToEditMode}>Edit Bango Values</button>
+      </div>
     }
 
     return (

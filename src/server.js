@@ -1,16 +1,16 @@
-const app = require('express')();
-const http = require('http').Server(app);
-const socketIO = require('socket.io')
+// const app = require('express')();
+// const http = require('http').Server(app);
+// const socketIO = require('socket.io')
 
-// app = require('express')()
-// app.listen(app.get('port'), function() {
-//   console.log('Node app is running on port..', app.get('port'));
-// });
-// let server = app.listen(9000);
-// let io = require('socket.io')(server);
+// const io = socketIO(http)
 
+const express = require('express');
+const socketIO = require('socket.io');
+const PORT = process.env.PORT || 9001;
+const server = express()
+  .listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
-const io = socketIO(http)
+const io = socketIO(server);
 
 let values = {}
 let activeValues = {}
@@ -117,6 +117,6 @@ io.on('connection', socket => {
 
 // const port = process.env.PORT || 9001
 
-http.listen(9001, function(){
-  console.log('its over 9000!!!')
-})
+// http.listen(9001, function(){
+//   console.log('its over 9000!!!')
+// })
