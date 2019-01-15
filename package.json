@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "node ./src/server.js"
+    "heroku-postbuild": "node ./src/server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
