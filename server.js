@@ -5,7 +5,7 @@ const path = require('path')
 
 const io = socketIO(http)
 
-app.use(express.static(__dirname + '/'));
+// app.use(express.static(__dirname + '/'));
 // app.use(express.static(path.join(__dirname, './'))
 //
 // app.get('/', (req, res, next) => {

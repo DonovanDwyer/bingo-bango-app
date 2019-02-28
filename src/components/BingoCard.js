@@ -4,7 +4,7 @@ import {activateValue} from '../actions/bingoActions'
 import {connect} from 'react-redux'
 import {CheckForWin} from './CheckForWin'
 
-class BingoCard extends Component {
+export class BingoCard extends Component {
   constructor(props){
     super(props)
     this.state = {

@@ -7,7 +7,7 @@ import BangoGameComponent from './BangoGameComponent'
 import BingoGameComponent from './BingoGameComponent'
 import Editor from './EditComponent'
 
-// const BASEURL = "http://localhost:9001"
+const BASEURL = "http://localhost:9001"
 // const BASEURL = "ws://bingobango-frontend.herokuapp.com:9001"
 // const BASEURL = "https://cbd0bac4.ngrok.io"
 
@@ -15,7 +15,7 @@ class ProfileComponent extends Component {
 
   constructor(props){
     super(props)
-    this.io = socketIO()
+    this.io = socketIO(BASEURL)
     this.state = {
       theme: "",
       roomName: "",

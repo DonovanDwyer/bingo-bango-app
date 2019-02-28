@@ -62,7 +62,7 @@ class BangoGameComponent extends Component {
     }
     return array;
   }
-  
+
   render(){
     let finalDiv;
     if(this.state.winner){
@@ -80,7 +80,10 @@ class BangoGameComponent extends Component {
         <div className="game-name-letter-box-bango">O</div>
         </div>
         {this.state.values &&
-          <BingoCard user={this.props.currentUser} values={this.shuffleArray(this.state.values)} socket={this.props.io} roomName={this.props.roomName} />}
+          <BingoCard user={this.props.currentUser}
+          values={this.shuffleArray(this.state.values)}
+          socket={this.props.io}
+          roomName={this.props.roomName} />}
           <CSSTransition
             key={this.state.currentVal}
             timeout={500}
@@ -111,6 +114,14 @@ const mapDispatchToProps = dispatch => {
     logWin: (user) => dispatch(increaseWins(user)),
     logLoss: (user) => dispatch(increaseLosses(user))
   }
+}
+
+export const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BangoGameComponent);

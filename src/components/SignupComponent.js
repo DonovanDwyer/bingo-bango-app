@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addUser} from '../actions/userActions'
 
-class SignupComponent extends Component {
+export class SignupComponent extends Component {
 
   state = {
     username: "",
@@ -31,6 +31,7 @@ class SignupComponent extends Component {
           <input
             type="text"
             name="username"
+            id="username"
             value={this.state.username}
             placeholder="Enter Your New Username"
             onChange={this.handleChange}
@@ -42,6 +43,7 @@ class SignupComponent extends Component {
           <input
             type="password"
             name="password"
+            id="password"
             value={this.state.password}
             placeholder="Enter Your New Password"
             onChange={this.handleChange}
@@ -50,7 +52,7 @@ class SignupComponent extends Component {
             required
           />
           <br />
-          <button type="submit">Sign Up</button>
+          <button type="submit" id="submit">Sign Up</button>
         </form>
         <div className="go-back-container">
           ...or <a href="/"><u>Go Back</u></a>
