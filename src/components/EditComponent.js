@@ -26,7 +26,11 @@ class Editor extends Component {
     let arr = [];
     arr = this.props.valueBucket.filter(value => value.theme === theme).map(value => value.content)
     this.props.saveThemes({values: arr, user: this.props.currentUser, token: localStorage.getItem('token')})
-    return <CustomValueContainer values={arr} />
+    return <CustomValueContainer values={arr} saveValues={this.saveValues} />;
+  }
+
+  saveValues = (valuesObj) => {
+    console.log(valuesObj);
   }
 
   render() {

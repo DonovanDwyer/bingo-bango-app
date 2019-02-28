@@ -21,12 +21,12 @@ export default class CustomValueContainer extends Component {
     valuesObj[key] = event.target.value;
     this.setState({
       valuesList: valuesObj
-    })
-  }
+    });
+  };
 
   submitHandler = e => {
     e.preventDefault();
-    console.log(e);
+    this.props.saveValues(this.state.valuesList);
   }
 
   render(){
