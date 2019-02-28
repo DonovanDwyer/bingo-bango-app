@@ -17,7 +17,11 @@ export default class CustomValueContainer extends Component {
   }
 
   handleChange = (event, key) => {
-
+    let valuesObj = this.state.valuesList;
+    valuesObj[key] = event.target.value;
+    this.setState({
+      valuesList: valuesObj
+    })
   }
 
   submitHandler = e => {
@@ -26,9 +30,13 @@ export default class CustomValueContainer extends Component {
   }
 
   render(){
+    console.log(this.state);
     return (
       <form onSubmit={this.submitHandler}>
-        {this.props.values.map((val, i) => <input type="text" key={i} defaultValue={val} onChange={(event) => this.handleChange(event, i)}/>)}
+        {this.props.values.map((val, i) => <input type="text"
+        key={i}
+        defaultValue={val}
+        onChange={(event) => this.handleChange(event, i)}/>)}
         <input type="submit" value="Save Changes" />
       </form>
     )
