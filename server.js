@@ -11,9 +11,8 @@ const PORT = process.env.PORT || 9001;
 const app = express();
 const server = require('http').createServer(app);
 
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('/', (req, res, next) => res.sendFile(__dirname + './index.html'));
+app.use(express.static(path.join(__dirname, '/build')));
+app.get('/*', (req, res, next) => res.sendFile(__dirname + './built/index.html'));
 
 const io = socketIO(server);
 
