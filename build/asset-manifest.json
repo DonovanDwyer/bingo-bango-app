@@ -1,14 +1,14 @@
 {
-  "main.css": "/static/css/main.ddcf4de4.chunk.css",
-  "main.js": "/static/js/main.ffcb7ae8.chunk.js",
-  "main.js.map": "/static/js/main.ffcb7ae8.chunk.js.map",
-  "static/js/1.838c5605.chunk.js": "/static/js/1.838c5605.chunk.js",
-  "static/js/1.838c5605.chunk.js.map": "/static/js/1.838c5605.chunk.js.map",
+  "main.css": "/static/css/main.272e8110.chunk.css",
+  "main.js": "/static/js/main.5b859b85.chunk.js",
+  "main.js.map": "/static/js/main.5b859b85.chunk.js.map",
+  "static/js/1.90e58177.chunk.js": "/static/js/1.90e58177.chunk.js",
+  "static/js/1.90e58177.chunk.js.map": "/static/js/1.90e58177.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.229c360f.js",
   "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
   "static/media/App.css": "/static/media/SpicyRice-Regular.25d5b567.otf",
-  "static/css/main.ddcf4de4.chunk.css.map": "/static/css/main.ddcf4de4.chunk.css.map",
+  "static/css/main.272e8110.chunk.css.map": "/static/css/main.272e8110.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.6de74b724c33937bf23a6c822bddfa59.js": "/precache-manifest.6de74b724c33937bf23a6c822bddfa59.js",
+  "precache-manifest.895a8b429a3620b5e19987fab7753069.js": "/precache-manifest.895a8b429a3620b5e19987fab7753069.js",
   "service-worker.js": "/service-worker.js"
 }

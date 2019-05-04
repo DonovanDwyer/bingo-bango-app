@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "ffcb7ae8d6da5eb46629",
-    "url": "/static/css/main.ddcf4de4.chunk.css"
+    "revision": "5b859b85c9d2e0a4b95f",
+    "url": "/static/css/main.272e8110.chunk.css"
   },
   {
-    "revision": "ffcb7ae8d6da5eb46629",
-    "url": "/static/js/main.ffcb7ae8.chunk.js"
+    "revision": "5b859b85c9d2e0a4b95f",
+    "url": "/static/js/main.5b859b85.chunk.js"
   },
   {
-    "revision": "838c5605d3db4bf3a25a",
-    "url": "/static/js/1.838c5605.chunk.js"
+    "revision": "90e58177af2cb8f45bc0",
+    "url": "/static/js/1.90e58177.chunk.js"
   },
   {
     "revision": "229c360febb4351a89df",
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/static/media/SpicyRice-Regular.25d5b567.otf"
   },
   {
-    "revision": "e27df8aba36363f2dc3c96b53e7bc35c",
+    "revision": "d50f4352904fa2eaf4b7990e6acbdc1a",
     "url": "/index.html"
   }
 ];
