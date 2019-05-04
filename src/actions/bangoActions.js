@@ -19,6 +19,25 @@ export function valueGetter(data) {
   };
 }
 
+export function saveValues(data) {
+  return (dispatch) => {
+    return fetch(`${BASEURL}/api/v1/values/new`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${data.token}`
+      },
+      body: JSON.stringify({
+        value: {
+          payload: [...data.values],
+          user: data.user.username
+        }
+      })
+    })
+  }
+}
+
 export function getAllThemes(data) {
   return (dispatch) => {
     dispatch({ type: 'LOADING' });

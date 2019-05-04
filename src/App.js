@@ -48,13 +48,13 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <Switch>
-            <Route exact path="/" render={this.renderStartScreen} />
-            <Route exact path="/login" render={(routerProps) => <Login {...routerProps} />}/>
-            <Route exact path="/signup" render={(routerProps) => <Signup {...routerProps} />}/>
-            <Route exact path="/profile" component={ProfileComponent}/>
-            <Route exact path="/bingo" component={BingoGameComponent} />
-            <Route exact path="/bango" component={BangoGameComponent} />
-            <Route exact path="/gameover" render={this.renderGameOver} />
+            <Route path="/" render={this.renderStartScreen} />
+            <Route path="/login" render={(routerProps) => <Login {...routerProps} />}/>
+            <Route path="/signup" render={(routerProps) => <Signup {...routerProps} />}/>
+            <Route path="/profile" component={ProfileComponent}/>
+            <Route path="/bingo" component={BingoGameComponent} />
+            <Route path="/bango" component={BangoGameComponent} />
+            <Route path="/gameover" render={this.renderGameOver} />
           </Switch>
         </React.Fragment>
       </Router>

@@ -3,15 +3,15 @@ import {connect} from 'react-redux';
 import {activateValue} from '../actions/bingoActions'
 import socketIO from 'socket.io-client'
 
-const BASEURL = "http://localhost:9001"
-// const BASEURL = "ws://bingobango-frontend.herokuapp.com:9001"
+// const BASEURL = "http://localhost:9001"
+// const BASEURL = "http://bingobango-frontend.herokuapp.com:9001"
 // const BASEURL = "https://cbd0bac4.ngrok.io"
 
 class CPUSocketContainer extends Component {
 
   constructor(props){
     super(props)
-    this.io = socketIO(BASEURL)
+    this.io = socketIO();
     this.state = {
       current: null
     }

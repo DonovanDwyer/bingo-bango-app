@@ -1,6 +1,6 @@
 import socketIO from 'socket.io-client'
-const BASEURL = "http://localhost:9001"
-// const BASEURL = "ws://bingobango-frontend.herokuapp.com:9001"
+// const BASEURL = "http://localhost:9001"
+const BASEURL = "http://bingobango-frontend.herokuapp.com:9001"
 // const BASEURL = "https://cbd0bac4.ngrok.io"
 
 export function bangoReducer(state = [], action){

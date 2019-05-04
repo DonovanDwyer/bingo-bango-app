@@ -1,9 +1,21 @@
-const app = require('express')();
-const http = require('http').Server(app);
-const socketIO = require('socket.io')
-const path = require('path')
+// const app = require('express')();
+// const http = require('http').Server(app);
+// const socketIO = require('socket.io')
+// const path = require('path')
+const express = require('express');
+const socketIO = require('socket.io');
+const path = require('path');
 
-const io = socketIO(http)
+const PORT = process.env.PORT || 9001;
+
+const app = express();
+const server = require('http').createServer(app);
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', (req, res, next) => res.sendFile(__dirname + './index.html'));
+
+const io = socketIO(server);
 
 // app.use(express.static(__dirname + '/'));
 // app.use(express.static(path.join(__dirname, './'))
@@ -127,8 +139,10 @@ io.on('connection', socket => {
   })
 })
 
-const port = process.env.PORT || 9001
+server.listen(PORT);
 
-http.listen(port, function(){
-  console.log('its over 9000!!!')
-})
+// const port = 9001
+//
+// http.listen(port, function(){
+//   console.log('its over 9000!!!')
+// })

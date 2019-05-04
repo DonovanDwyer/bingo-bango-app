@@ -2,8 +2,12 @@ import React, {Component} from 'react';
 
 export default class CustomValueContainer extends Component {
 
-  state = {
-    valuesList: {}
+  constructor(props){
+    super(props);
+    this.state = {
+      valuesList: {}
+    };
+    this.renderedView = this.renderEditList();
   }
 
   componentDidMount = () => {
@@ -24,20 +28,56 @@ export default class CustomValueContainer extends Component {
     });
   };
 
+  handleDelete = (event, key) => {
+    event.preventDefault();
+    let valuesObj = Object.assign({}, this.state.valuesList);
+    delete valuesObj[key];
+    this.setState({
+      valuesList: valuesObj
+    }, () => {
+      this.renderedView = this.renderUpdatedList()
+    });
+  }
+
   submitHandler = e => {
     e.preventDefault();
     this.props.saveValues(this.state.valuesList);
   }
 
+  renderEditList = () => {
+    return (
+      <div>
+      <button onClick={this.handleAddValue}>Add New Value</button><br />
+      {this.props.values.map((val, i) => <div key={i}><input type="text"
+      key={i}
+      defaultValue={val}
+      onChange={(event) => this.handleChange(event, i)}/>
+      <button onClick={(event) => this.handleDelete(event, i)}>Delete</button>
+      </div>)}
+      <input type="submit" value="Save Changes" />
+      </div>
+    );
+  }
+
+  renderUpdatedList = () => {
+    return (
+      <div aria-label="This is a div. A di">
+      <button onClick={this.handleAddValue}>Add New Value</button><br />
+      {Object.keys(this.state.valuesList).map((key, i) => <div key={key}><input type="text"
+      key={key}
+      defaultValue={this.state.valuesList[key]}
+      onChange={(event) => this.handleChange(event, key)}/>
+      <button onClick={(event) => this.handleDelete(event, key)}>Delete</button>
+      </div>)}
+      <input type="submit" value="Save Changes" aria-role="button" aria-disabled/>
+      </div>
+    );
+  }
+
   render(){
-    console.log(this.state);
     return (
       <form onSubmit={this.submitHandler}>
-        {this.props.values.map((val, i) => <input type="text"
-        key={i}
-        defaultValue={val}
-        onChange={(event) => this.handleChange(event, i)}/>)}
-        <input type="submit" value="Save Changes" />
+        {this.renderedView}
       </form>
     )
   }
