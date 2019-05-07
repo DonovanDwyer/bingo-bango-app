@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getAllThemes, saveThemes} from '../actions/bangoActions';
+import {getAllThemes, saveThemes, saveValues} from '../actions/bangoActions';
 import CustomValueContainer from './CustomValueContainer';
 
 class Editor extends Component {
@@ -65,7 +65,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getThemes: (data) => dispatch(getAllThemes(data)),
-    saveThemes: (data) => dispatch(saveThemes(data))
+    saveThemes: (data) => dispatch(saveThemes(data)),
+    saveValues: (data) => dispatch(saveValues(data))
   }
 }
 

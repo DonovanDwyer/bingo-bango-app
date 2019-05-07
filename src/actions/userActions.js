@@ -1,5 +1,5 @@
-// let BASEURL = "http://localhost:4000"
-const BASEURL = "https://bingobango-api.herokuapp.com"
+let BASEURL = "http://localhost:4000"
+// const BASEURL = "https://bingobango-api.herokuapp.com"
 
 export function addUser(user) {
   return (dispatch) => {

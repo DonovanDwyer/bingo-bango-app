@@ -1,7 +1,3 @@
-// const app = require('express')();
-// const http = require('http').Server(app);
-// const socketIO = require('socket.io')
-// const path = require('path')
 const express = require('express');
 const socketIO = require('socket.io');
 const path = require('path');
@@ -16,35 +12,11 @@ app.get('/', (req, res, next) => res.sendFile(__dirname + './index.html'));
 
 const io = socketIO(server);
 
-// app.use(express.static(__dirname + '/'));
-// app.use(express.static(path.join(__dirname, './'))
-//
-// app.get('/', (req, res, next) => {
-//   return res.sendFile(__dirname + '../public/index.html');
-// })
-
-
-// const express = require('express');
-// const socketIO = require('socket.io');
-// const path = require('path');
-// const PORT = 9001;
-// const INDEX = path.join(__dirname, 'index.html');
-// const server = express()
-//   .use((req, res) => res.sendFile(INDEX) )
-//   .listen(PORT, () => console.log(`Listening on port ${PORT}`, process.env.PORT));
-//
-// const io = socketIO(server);
-
 let values = {}
 let activeValues = {}
 let cpu = {}
 let theme = ""
 let rooms = []
-
-
-// app.get('/', function(req, res){
-//   res.send('<h1>Running socket server...</h1>');
-// })
 
 io.on('connection', socket => {
   console.log(`${socket.id} connected`)
@@ -139,9 +111,3 @@ io.on('connection', socket => {
 })
 
 server.listen(PORT);
-
-// const port = 9001
-//
-// http.listen(port, function(){
-//   console.log('its over 9000!!!')
-// })

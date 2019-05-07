@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "5b859b85c9d2e0a4b95f",
+    "revision": "fb41b06f995909fc8042",
     "url": "/static/css/main.272e8110.chunk.css"
   },
   {
-    "revision": "5b859b85c9d2e0a4b95f",
-    "url": "/static/js/main.5b859b85.chunk.js"
+    "revision": "fb41b06f995909fc8042",
+    "url": "/static/js/main.fb41b06f.chunk.js"
   },
   {
     "revision": "90e58177af2cb8f45bc0",
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/static/media/SpicyRice-Regular.25d5b567.otf"
   },
   {
-    "revision": "d50f4352904fa2eaf4b7990e6acbdc1a",
+    "revision": "46e3e265e9212cbc52ebc6b51751fc87",
     "url": "/index.html"
   }
 ];
