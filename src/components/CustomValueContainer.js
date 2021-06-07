@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 export default class CustomValueContainer extends Component {
-
   constructor(props){
     super(props);
     this.state = {
@@ -12,8 +11,8 @@ export default class CustomValueContainer extends Component {
 
   componentDidMount = () => {
     let valuesObj = {};
-    let valuesList = this.props.values.map((val, i) => {
-      valuesObj[i] = val;
+    this.props.values.map((val, i) => {
+      return valuesObj[i] = val;
     });
     this.setState({valuesList: valuesObj});
   };

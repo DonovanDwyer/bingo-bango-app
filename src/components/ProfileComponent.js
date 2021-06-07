@@ -6,6 +6,7 @@ import socketIO from 'socket.io-client';
 import BangoGameComponent from './BangoGameComponent';
 import BingoGameComponent from './BingoGameComponent';
 import Editor from './EditComponent';
+import Chat from './Chat';
 
 class ProfileComponent extends Component {
   constructor(props){
@@ -212,6 +213,7 @@ class ProfileComponent extends Component {
             <li>Wins: {currentUser.wins}</li>
             <li id="final-nav-item">Losses: {currentUser.losses}</li>
             <li><button onClick={this.handleLogOut}>Log Out</button></li>
+            <li><Chat io={this.io} /></li>
           </ul>
         </div>
         {finalDiv}

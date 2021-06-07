@@ -1,4 +1,4 @@
-let BASEURL = "http://localhost:3001"
+let BASEURL = "http://localhost:3001";
 // const BASEURL = "https://bingobango-api.herokuapp.com"
 
 export function valueGetter(data) {
@@ -17,7 +17,7 @@ export function valueGetter(data) {
     }).then(res => res.json())
       .then(values => dispatch({ type: 'GET_VALUES', payload: values, room: data.room }));
   };
-}
+};
 
 export function saveValues(data) {
   return (dispatch) => {
@@ -35,8 +35,8 @@ export function saveValues(data) {
         }
       })
     })
-  }
-}
+  };
+};
 
 export function getAllThemes(data) {
   return (dispatch) => {
@@ -55,7 +55,7 @@ export function getAllThemes(data) {
     }).then(res => res.json())
       .then(values => dispatch({ type: 'GET_THEMES', payload: values }));
   };
-}
+};
 
 export function saveThemes(data) {
   return (dispatch) => {
@@ -73,5 +73,5 @@ export function saveThemes(data) {
         }
       })
     })
-  }
-}
+  };
+};

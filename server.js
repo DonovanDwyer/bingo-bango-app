@@ -5,6 +5,7 @@ const server = require('http').createServer(app);
 const socketIO = require('socket.io');
 
 const path = require('path');
+const { emit } = require('process');
 const PORT = process.env.PORT || 9001;
 
 app.use(express.static(path.join(__dirname, '/build')));
@@ -17,6 +18,7 @@ let activeValues = {};
 let cpu = {};
 let theme = "";
 let rooms = [];
+let chat = {};
 
 io.on('connection', socket => {
   console.log(`${socket.id} connected`);
@@ -37,6 +39,7 @@ io.on('connection', socket => {
     rooms.push(roomData);
     socket.join(room);
     activeValues[roomData.name] = [];
+    chat[roomData.name] = [];
   });
 
   socket.on('get_rooms', () => {
@@ -84,9 +87,9 @@ io.on('connection', socket => {
   });
 
   socket.on('add_values', (data) => {
-      values[data.room] = data.values;
-      activeValues[data.room] = [];
-      io.sockets.to(data.room).emit('receive_values', values[data.room]);
+    values[data.room] = data.values;
+    activeValues[data.room] = [];
+    io.sockets.to(data.room).emit('receive_values', values[data.room]);
   });
 
   socket.on('get_current_game_values', (data) => {
@@ -98,6 +101,19 @@ io.on('connection', socket => {
       activeValues[data.room].push(data.value);
       io.sockets.to(data.room).emit('new_bango_value', activeValues[data.room]);
     };
+  });
+
+
+  // Chat Functionality
+
+  socket.on('get_chat', (roomName) => {
+    socket.emit('receive_chat', chat[roomName]);
+  });
+
+  socket.on('send_chat_message', (roomName, userName, chatString) => {
+    let newMessage = { [userName]: chatString };
+    chat[roomName].push(newMessage);
+    socket.to(roomName).broadcast.emit('new_message_alert', newMessage);
   });
 
   socket.on('disconnect', () => {

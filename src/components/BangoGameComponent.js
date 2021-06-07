@@ -21,7 +21,6 @@ class BangoGameComponent extends Component {
   componentDidMount = () => {
     this.props.io.on('receive_values', (values) => {
       if(values !== null){
-        console.log(values);
         let arrayOfValues = [];
         for(let value of values){
           arrayOfValues.push(value.content);
