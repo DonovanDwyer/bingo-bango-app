@@ -6,7 +6,7 @@ import socketIO from 'socket.io-client';
 import BangoGameComponent from './BangoGameComponent';
 import BingoGameComponent from './BingoGameComponent';
 import Editor from './EditComponent';
-import Chat from './Chat';
+import { ChatContainer } from './Chat';
 
 class ProfileComponent extends Component {
   constructor(props){
@@ -21,7 +21,6 @@ class ProfileComponent extends Component {
       editMode: false
     };
   };
-
   componentDidMount = () => {
     setTimeout( () => {
       return this.props.authorizeUser(localStorage.getItem('token')).then(json => {
@@ -32,11 +31,9 @@ class ProfileComponent extends Component {
       });
     }, 500);
   };
-
   componentWillUnmount = () => {
     this.io.removeAllListeners();
   };
-
   resetProfileScreen = () => {
     this.io.removeAllListeners();
     this.setState({
@@ -46,7 +43,6 @@ class ProfileComponent extends Component {
       roomName: ""
     });
   };
-
   startBingoGame = e => {
     let name;
     e.preventDefault();
@@ -57,7 +53,6 @@ class ProfileComponent extends Component {
       gameChosen: "bingo"
     });
   };
-
   startBangoGame = e => {
     this.io.removeAllListeners();
     e.preventDefault();
@@ -74,32 +69,27 @@ class ProfileComponent extends Component {
       gameChosen: "bango"
     });
   };
-
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
-
   handleButton = () => {
     this.setState({
       theme: "Dinner With The Family"
     });
   };
-
   handleLogOut = () => {
     localStorage.clear();
     this.props.logOut();
     this.props.history.push('/');
   };
-
   showRooms = () => {
     this.io.emit("get_rooms", {});
     this.io.on('receive_rooms', rooms => {
       this.setState({roomList: rooms})
     });
   };
-
   joinRoom = e => {
     e.preventDefault();
     if(this.state.roomName === ""){
@@ -114,7 +104,6 @@ class ProfileComponent extends Component {
     this.setState({gameChosen: room.type});
     };
   };
-
   renderRoomList = () => {
     let arrayOfRooms = this.state.roomList.map(room => <option value={room.name} key={room.name}>{room.name} - {room.type} Game</option>);
     return <form onSubmit={this.joinRoom} className="room-form-container center-vertically">
@@ -127,7 +116,6 @@ class ProfileComponent extends Component {
       <input type="submit" />
     </form>
   };
-
   renderBangoMenu = () => {
     return (
       <div className="center-vertically">
@@ -157,19 +145,15 @@ class ProfileComponent extends Component {
       </div>
     );
   };
-
   renderBingoMenu = () => {
     this.setState({gameChosen: "pending"});
   };
-
   switchToEditMode = () => {
     this.setState({editMode: true});
   };
-
   exitEditMode = () => {
     this.setState({editMode: false});
   };
-
   render(){
     const {currentUser} = this.props;
     let finalDiv;
@@ -213,7 +197,7 @@ class ProfileComponent extends Component {
             <li>Wins: {currentUser.wins}</li>
             <li id="final-nav-item">Losses: {currentUser.losses}</li>
             <li><button onClick={this.handleLogOut}>Log Out</button></li>
-            <li><Chat io={this.io} /></li>
+            <li><ChatContainer io={this.io} roomName={this.state.roomName} /></li>
           </ul>
         </div>
         {finalDiv}
@@ -225,7 +209,6 @@ class ProfileComponent extends Component {
 const mapStateToProps = state => {
   return { currentUser: state.currentUser };
 };
-
 const mapDispatchToProps = dispatch => {
   return {
     getValues: (data) => dispatch(valueGetter(data)),
@@ -233,5 +216,4 @@ const mapDispatchToProps = dispatch => {
     authorizeUser: (token) => dispatch(checkAuth(token))
   };
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileComponent);

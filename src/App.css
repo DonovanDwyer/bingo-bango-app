@@ -153,7 +153,7 @@ input:-webkit-autofill:active  { /* mega hack, omg wat */
 .center-vertically {
   position: absolute;
   width: 100%;
-  top: 40%;
+  top: 50%;
   transform: translateY(-50%);
 }
 
@@ -720,6 +720,27 @@ input:-webkit-autofill:active  { /* mega hack, omg wat */
   text-align: center;
   color: white;
   word-wrap: break-word;
+}
+
+.chat-box {
+  right: 3px;
+  top: 20px;
+  position: absolute;
+  z-index: 1;
+}
+
+.chat-box input {
+  width: 278px;
+}
+
+.chat-log{
+  background-color: white;
+  color: black;
+  font-family: serif;
+  font-size: 0.75em;
+  max-height: 400px;
+  width: 300px;
+  overflow-y: scroll;
 }
 
 @keyframes slidetocenter2 {

@@ -18,7 +18,7 @@ let activeValues = {};
 let cpu = {};
 let theme = "";
 let rooms = [];
-let chat = {};
+let chat = { lobby: [] };
 
 io.on('connection', socket => {
   console.log(`${socket.id} connected`);
@@ -111,7 +111,10 @@ io.on('connection', socket => {
   });
 
   socket.on('send_chat_message', (roomName, userName, chatString) => {
-    let newMessage = { [userName]: chatString };
+    let newMessage = { 
+      user: userName, 
+      string: chatString 
+    };
     chat[roomName].push(newMessage);
     socket.to(roomName).broadcast.emit('new_message_alert', newMessage);
   });

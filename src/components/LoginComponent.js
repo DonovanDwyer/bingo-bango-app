@@ -3,18 +3,15 @@ import {connect} from 'react-redux'
 import {getUser} from '../actions/userActions'
 
 class LoginComponent extends Component {
-
   state = {
     username: "",
     password: ""
   }
-
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
-
   handleSubmit = event => {
     event.preventDefault();
     this.props.getThisUser(this.state).then((res) => {
@@ -25,7 +22,6 @@ class LoginComponent extends Component {
     })
     this.props.history.push("/profile")
   }
-
   render(){
     return (
       <div className="start-screen-container">
@@ -68,5 +64,4 @@ class LoginComponent extends Component {
 const mapDispatchToProps = dispatch => {
   return { getThisUser: user => dispatch(getUser(user))}
 }
-
 export default connect(null, mapDispatchToProps)(LoginComponent)
