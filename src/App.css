@@ -34,7 +34,7 @@ button {
 
 .start-screen-container {
   position: relative;
-  background-color: #6897e8;
+  background-color: #bfabd6;
   height: 1000px;
   margin-top: -50px;
   width: 100%;
@@ -190,7 +190,7 @@ input:-webkit-autofill:active  { /* mega hack, omg wat */
 
 .profile-page-container {
   position: relative;
-  background-color: #6897e8;
+  background-color: #bfabd6;
   width: 100%;
   height: 100%;
 }

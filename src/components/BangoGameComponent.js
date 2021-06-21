@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Prompt } from 'react-router-dom';
 import BingoCard from './BingoCard';
 import { connect } from 'react-redux';
 import { increaseWins, increaseLosses } from '../actions/userActions';
@@ -14,7 +15,8 @@ class BangoGameComponent extends Component {
     this.state = {
       currentVal: null,
       winner: false,
-      countdown: true
+      countdown: true,
+      blockNavigation: true
     };
   };
 
@@ -29,6 +31,7 @@ class BangoGameComponent extends Component {
       };
     });
     this.props.io.once('winner', (user) => {
+      this.setState({ blockNavigation: false });
       if(this.props.currentUser !== undefined){
         if(this.props.currentUser.id === user.id){
           this.setState({
@@ -70,6 +73,7 @@ class BangoGameComponent extends Component {
       </div>
     } else {
       finalDiv = <div>
+          <Prompt when={this.state.blockNavigation} message="Are you sure you want to leave the game?" />
           <div className="game-name-container">
           <div className="game-name-letter-box-bango">B</div>
           <div className="game-name-letter-box-bango">A</div>
